@@ -103,7 +103,7 @@ public class test {
 			
 		
 		
-		
+	  //ZADATAK - testirati konstruktore, toString() i equals(...) metode
 		
 	}
 

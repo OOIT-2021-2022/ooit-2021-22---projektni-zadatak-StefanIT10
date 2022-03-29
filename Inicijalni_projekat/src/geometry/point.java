@@ -27,6 +27,21 @@ public class point {
 		double d= Math.sqrt(dx*dx+dy*dy);
 		return d;
 	}
+	
+	public boolean equals(Object obj) {
+		if(obj instanceof point) {
+			point pomocna = (point) obj; //downcast
+			if(this.x==pomocna.x && this.y==pomocna.y)
+				return true;
+			
+			else 
+				return false;
+			
+		} else
+			return false;
+		
+		}
+	
 
 	public int getX() {
 		return this.x;
@@ -52,6 +67,15 @@ public class point {
 		return selected;
 	}
 
+	public String toString() {
+		return "(" + x + "," + y + ")";
+		
+		//nije ispravno
+		//return x.toString(); 
+				
+		//ispravno, ali necemo samo x koordinatu
+		//return String.valueOf(x); 
+	}
 	
 	
 	

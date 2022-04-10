@@ -106,6 +106,37 @@ public class test2 {
 		Point p5 = new Point(15,20,true);
 		System.out.println(p4.getX());
 		System.out.println(p5.isSelected());
+		
+		//za tacku poziva toString() i ispisuje koordinate tacke dok za liniju ispisuje referencu (nismo jos redefinisali toString() u liniji)
+		System.out.println(p4.toString());
+		System.out.println(p4);
+		System.out.println(l1);
+		
+		
+		//nakon definisanja equals(...) metode
+		//razlicite vrednosti i razlicite reference
+		System.out.println(p4.equals(p5));
+		System.out.println(p4==p5);
+		System.out.println(p4==p5);
+				
+		//dodela vrednosti i reference
+				p4=p5;	
+			
+		//iste vrednosti i iste reference
+		System.out.println(p4.equals(p5));	
+		System.out.println(p4==p5);
+
+		
+		//iste vrednosti, ali razlicite reference zbog operatora NEW	
+	        point p6 = new point(10,15);
+	        point p7 = new point(10,15);
+	        System.out.println(p6==p7);
+	        System.out.println(p6.equals(p7));		
+		
+		
+		
+	        //ZADATAK - testirati konstruktore, toString() i equals(...) metode
+
 				 
 				
 				 

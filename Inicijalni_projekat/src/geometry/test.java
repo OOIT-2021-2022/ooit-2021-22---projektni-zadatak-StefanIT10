@@ -61,8 +61,8 @@ public class test {
 		
 		//vezbe 4
 		
-		point p2 = new point();
-		Line l2 = new Line();
+		point p2 = new point(50,100);
+		Line l2 = new Line(p2, new point(400,500));
 		Circle1 c2 = new Circle1();
 		
 		c2.getCenter().setX((int)(c2.getRadius()+l2.getStartPoint().distance(l2.getEndPoint().getX(),l2.getEndPoint().getY())));

@@ -7,7 +7,7 @@ public class Point {
 	private int y;
 	private boolean selected;
 	
-   public point() {
+        public point() {
 		
 	}
 	
@@ -20,6 +20,20 @@ public class Point {
 		this(x,y);
 		this.selected=selected;
 	}
+	
+	public boolean equals(Object obj) {
+		if(obj instanceof Point) {
+			Point pomocna = (Point) obj; //downcast
+			if(this.x==pomocna.x && this.y==pomocna.y)
+				return true;
+			
+			else 
+				return false;
+			
+		} else
+			return false;
+		
+		}
 	
 	
 	public double distance(int xPoint2, int yPoint2) {
@@ -54,7 +68,14 @@ public class Point {
 		this.selected = selected;
 	}
 	
-	
+	public String toString() {
+		return "(" + x + "," + y + ")";
+		
+		//nije ispravno
+		//return x.toString(); 
+				
+		//ispravno, ali necemo samo x koordinatu
+		//return String.valueOf(x); 
 	
 	
 	

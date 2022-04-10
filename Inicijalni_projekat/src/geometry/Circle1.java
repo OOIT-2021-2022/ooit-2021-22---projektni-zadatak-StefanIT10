@@ -6,6 +6,7 @@ public class Circle1 {
 	private int radius;
 	private boolean selected;
 	
+	
 	public boolean isSelected() {
 		return selected;
 	}

@@ -6,6 +6,14 @@ public class Circle1 {
 	private int radius;
 	private boolean selected;
 	
+	public boolean isSelected() {
+		return selected;
+	}
+
+	public void setSelected(boolean selected) {
+		this.selected = selected;
+	}
+
 	public Circle1() {
 
 	}

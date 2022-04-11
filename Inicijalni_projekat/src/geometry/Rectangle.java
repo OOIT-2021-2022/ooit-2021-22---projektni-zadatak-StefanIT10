@@ -36,6 +36,17 @@ public class Rectangle {
 		
 		}
 	
+	public boolean contains(int x, int y) {
+		return upperLeftPoint.getX()<=x && upperLeftPoint.getX()+width>=x 
+				&& upperLeftPoint.getY()<=y && upperLeftPoint.getY()+height>=y;
+	}
+	
+	public boolean contains(Point clickPoint) {
+		return upperLeftPoint.getX()<=clickPoint.getX() && upperLeftPoint.getX()+width>=clickPoint.getX()
+				&& upperLeftPoint.getY()<=clickPoint.getY() && upperLeftPoint.getY()+height>=clickPoint.getY();
+	}
+	
+	
 	
 	
 	public int area() {

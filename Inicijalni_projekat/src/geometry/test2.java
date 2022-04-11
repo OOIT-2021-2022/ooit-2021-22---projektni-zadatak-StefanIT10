@@ -135,8 +135,15 @@ public class test2 {
 		
 		
 		
-	        //ZADATAK - testirati konstruktore, toString() i equals(...) metode
-
+	     //ZADATAK - testirati konstruktore, toString() i equals(...) metode
+     
+	    
+	        
+	    //vezbe 5
+	        
+	    Point clickPoint = new Point(10,15);
+	    p7.contains(clickPoint.getX(), clickPoint.getY());
+	        
 				 
 				
 				 

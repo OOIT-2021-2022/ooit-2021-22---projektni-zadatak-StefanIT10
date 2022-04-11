@@ -34,6 +34,14 @@ public class Circle {
 		
 		}
 	
+	public boolean contains(int x, int y) {
+		return center.distance(x,y)<=2;
+	}
+	
+	public boolean contains(Point clickPoint) {
+		return center.distance(clickPoint.getX(), clickPoint.getY())<=2;
+	}
+	
 	public double area() {
 		return radius*radius*Math.PI;
 	}

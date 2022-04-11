@@ -32,6 +32,10 @@ public class line {
 		
 		}
 	
+	public boolean contains(int x, int y) {
+		return this.startPoint.distance(x,y)-this.endPoint.distance(x,y)-length()<=2;
+	}
+	
 	
 	
 	public double length() {

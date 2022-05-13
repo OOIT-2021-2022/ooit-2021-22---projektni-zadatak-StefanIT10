@@ -105,6 +105,25 @@ public class test {
 		
 	  //ZADATAK - testirati konstruktore, toString() i equals(...) metode
 		
+	    
+	    //vezbe 5
+	    point clickPoint= new point(12,17);
+	    System.out.println(p7.contains(clickPoint.getX(), clickPoint.getY()));
+		//System.out.println(lin.contains(clickPoint.getX(), clickPoint.getY()));
+	    
+	    
+	    Donut donut = new Donut(new point(12,17), 20,10,true);
+	    System.out.println(donut.toString());
+		System.out.println(donut instanceof Circle1);
+		System.out.println(donut instanceof Donut);
+		System.out.println(c2 instanceof Donut);
+		
+		//Vezbe 6
+		Shape shape=new point(10,15);
+		System.out.println(shape);
+		
+	    
+	    
 	}
 
 }

@@ -1,19 +1,13 @@
 package geometry;
 
-public class Circle1 {
-	
-	private point center;
-	private int radius;
-	private boolean selected;
-	
-	
-	public boolean isSelected() {
-		return selected;
-	}
+import java.awt.Graphics;
 
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
+public class Circle1 extends Shape {
+	
+	protected point center;
+	private int radius;
+	
+
 
 	public Circle1() {
 
@@ -26,7 +20,7 @@ public class Circle1 {
 
 	public Circle1(point center, int radius, boolean selected) {
 		this(center, radius);
-		this.selected = selected;
+		setSelected(selected);
 	}
 	
 	public double area() {
@@ -47,6 +41,15 @@ public class Circle1 {
 				return false;
 			
 			}
+	 
+	 public boolean contains(int x, int y) {
+	    	return center.distance(x,y)<=radius;
+	    }
+	    
+	    public boolean contains(point p) {
+	    	return center.distance(p.getX(), p.getY())<=radius;
+	    }
+	    
 	
 	public double circumference() {
 		return 2*radius*Math.PI;
@@ -71,6 +74,12 @@ public class Circle1 {
 	public String toString() {
 		// Center=(x,y), radius= radius
 		return "Center=" + center + ", radius=" + radius;
+	}
+
+	@Override
+	public void draw(Graphics g) {
+		g.drawOval(center.getX()-radius, center.getY()-radius, radius*2, radius*2);
+		
 	}
 
 }

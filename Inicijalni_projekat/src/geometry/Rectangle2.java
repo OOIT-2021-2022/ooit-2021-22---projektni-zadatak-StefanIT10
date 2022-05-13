@@ -1,11 +1,13 @@
 package geometry;
 
-public class Rectangle2 {
+import java.awt.Graphics;
+
+public class Rectangle2 extends Shape {
 	
 	private point upperLeftPoint;
 	private int width;
 	private int height;
-	private boolean selected;
+	
 	
 	public Rectangle2() {}
 	
@@ -18,7 +20,7 @@ public class Rectangle2 {
 	
 	public Rectangle2(point upperLeftPoint, int width, int height, boolean selected) {
 		this(upperLeftPoint, width, height);
-		this.selected=selected;
+		setSelected(selected);
 	}
 	
 	public boolean equals(Object obj) {
@@ -36,12 +38,32 @@ public class Rectangle2 {
 		
 		}
 	
+	public boolean contains(int x, int y) {
+		if(x>upperLeftPoint.getX() && x<=upperLeftPoint.getX()+width
+				&& y>upperLeftPoint.getY() && y<=upperLeftPoint.getY()+height)
+			return true;
+		return false;
+	}
+	
+	public boolean contains(point p) {
+		if(p.getX()>upperLeftPoint.getX() && p.getX()<=upperLeftPoint.getX()+width
+				&& p.getY()>upperLeftPoint.getY() && p.getY()<=upperLeftPoint.getY()+height)
+			return true;
+		return false;
+	}
+	
 	public int area() {
 		return height*width;
 	}
 	
 	public int circumference() {
 		return 2*width+2*height;
+	}
+	
+	@Override
+	public void draw(Graphics g) {
+		g.drawRect(upperLeftPoint.getX(),upperLeftPoint.getY(),width,height);
+		
 	}
 	
 	public point getupperLeftPoint() {
@@ -66,14 +88,6 @@ public class Rectangle2 {
 
 	public void setHeight(int height) {
 		this.height = height;
-	}
-
-	public boolean isSelected() {
-		return selected;
-	}
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
 	}
 
 	public String toString() {

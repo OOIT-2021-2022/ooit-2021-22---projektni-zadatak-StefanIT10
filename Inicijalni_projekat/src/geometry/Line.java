@@ -70,4 +70,29 @@ public class Line extends Shape{
 		
 	}
 
+	@Override
+	public void moveTo(int x, int y) {
+		startPoint.moveTo(x, y);
+		endPoint.moveTo(x, y);
+		
+	}
+
+	@Override
+	public void moveBy(int x, int y) {
+		startPoint.moveBy(x, y);
+		endPoint.moveBy(x,y);
+		
+	}
+
+	@Override
+	public int compareTo(Object obj) {
+		if(obj instanceof Line) {
+			Line LineToCompare = (Line)obj;
+			return (int)(this.length()-LineToCompare.length());
+		}
+		return 0;
+	}
+	
+	
+
 }

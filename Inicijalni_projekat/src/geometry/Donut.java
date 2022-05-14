@@ -70,5 +70,13 @@ public class Donut extends Circle1{
 		return super.toString() + ", innerRadius=" +innerRadius;
 	}
 	
+	public int compareTo(Object obj) {
+		if(obj instanceof Donut) {
+			Donut donutToCompare = (Donut)obj;
+			return (int)(this.area()-donutToCompare.area());
+		}
+		return 0;
+	}
+	
 	
 }

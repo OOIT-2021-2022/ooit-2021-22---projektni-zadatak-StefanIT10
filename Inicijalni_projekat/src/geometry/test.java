@@ -187,7 +187,7 @@ public class test {
 	       for(int i=0; i<oblici.length; i++) 
 	       oblici[i].moveBy(10, 15);
 	      
-	       
+	      
 	    
 	       
 	       

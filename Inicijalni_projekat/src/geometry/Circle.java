@@ -1,24 +1,25 @@
 package geometry;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
-public class Circle1 extends Shape {
+public class Circle extends Shape {
 	
-	protected point center;
+	protected Point center;
 	private int radius;
 	
 
 
-	public Circle1() {
+	public Circle() {
 
 	}
 
-	public Circle1(point center, int radius) {
+	public Circle(Point center, int radius) {
 		this.center = center;
 		this.radius = radius;
 	}
 
-	public Circle1(point center, int radius, boolean selected) {
+	public Circle(Point center, int radius, boolean selected) {
 		this(center, radius);
 		setSelected(selected);
 	}
@@ -28,8 +29,8 @@ public class Circle1 extends Shape {
 	}
 	
 	 public boolean equals(Object obj) {
-			if(obj instanceof Circle1) {
-				Circle1 pomocna = (Circle1) obj; //downcast
+			if(obj instanceof Circle) {
+				Circle pomocna = (Circle) obj; //downcast
 				if (this.center.equals(pomocna.center) &&
 						this.radius == pomocna.radius)
 					return true;
@@ -46,7 +47,7 @@ public class Circle1 extends Shape {
 	    	return center.distance(x,y)<=radius;
 	    }
 	    
-	    public boolean contains(point p) {
+	    public boolean contains(Point p) {
 	    	return center.distance(p.getX(), p.getY())<=radius;
 	    }
 	    
@@ -55,11 +56,11 @@ public class Circle1 extends Shape {
 		return 2*radius*Math.PI;
 	}
 	
-	public point getCenter() {
+	public Point getCenter() {
 		return this.center;
 	}
 	
-	public void setCenter(point center) {
+	public void setCenter(Point center) {
 		this.center=center;
 	}
 	
@@ -68,10 +69,10 @@ public class Circle1 extends Shape {
 	}
 	
 	public void setRadius(int radius) throws Exception {
-		if(radius<0) {
-			throw new Exception("Radius mora biti veci od 0");
-		}
-		this.radius=radius;
+		 if(radius<0) {
+			 throw new Exception("Radius mora biti veci od 0");
+		 }
+		 this.radius=radius;
 		
 	}
 	
@@ -83,6 +84,17 @@ public class Circle1 extends Shape {
 	@Override
 	public void draw(Graphics g) {
 		g.drawOval(center.getX()-radius, center.getY()-radius, radius*2, radius*2);
+		
+		if(selected) {
+			g.setColor(Color.blue);
+		    g.drawRect(center.getX()-2, center.getY()-2, 4, 4);
+		    g.drawRect(center.getX()-radius-2, center.getY()-2, 4, 4);
+		    g.drawRect(center.getX()+radius-2, center.getY()-2, 4, 4);
+		    g.drawRect(center.getX()- 2, center.getY() - radius - 2, 4, 4);
+		    g.drawRect(center.getX()- 2, center.getY() + radius - 2, 4, 4);
+		    g.setColor(Color.BLACK);
+		
+		}
 		
 	}
 
@@ -100,8 +112,8 @@ public class Circle1 extends Shape {
 
 	@Override
 	public int compareTo(Object obj) {
-		if(obj instanceof Circle1) {
-			Circle1 circleToCompare = (Circle1)obj;
+		if(obj instanceof Circle) {
+			Circle circleToCompare = (Circle)obj;
 			return (int)(this.area()-circleToCompare.area());
 		}
 		return 0;

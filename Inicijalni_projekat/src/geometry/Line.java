@@ -1,21 +1,22 @@
 package geometry;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Line extends Shape{
 	
-	private point startPoint;
-	private point endPoint;
+	private Point startPoint;
+	private Point endPoint;
 	
 	
 	public Line() {}
 	
-	public Line(point startPoint, point endPoint) {
+	public Line(Point startPoint, Point endPoint) {
 		this.startPoint=startPoint;
 		this.endPoint=endPoint;
 	}
 	
-	public Line(point startPoint, point endPoint, boolean selected) {
+	public Line(Point startPoint, Point endPoint, boolean selected) {
 		this (startPoint, endPoint);
 		//this.selected=selected;
 		setSelected(selected);
@@ -43,19 +44,19 @@ public class Line extends Shape{
 		return (this.startPoint.distance(x,y)+this.endPoint.distance(x,y)-length()<=2);
 	}
 	
-	public void setStartPoint(point startPoint) {
+	public void setStartPoint(Point startPoint) {
 		this.startPoint=startPoint;
 	}
 	
-	public point getStartPoint() {
+	public Point getStartPoint() {
 		return this.startPoint;
 	}
 
-	public point getEndPoint() {
+	public Point getEndPoint() {
 		return endPoint;
 	}
 
-	public void setEndPoint(point endPoint) {
+	public void setEndPoint(Point endPoint) {
 		this.endPoint = endPoint;
 	}
 
@@ -68,6 +69,13 @@ public class Line extends Shape{
 	public void draw(Graphics g) {
 		g.drawLine(startPoint.getX(), startPoint.getY(), endPoint.getX(), endPoint.getY());
 		
+		if(selected) {
+			g.setColor(Color.blue);
+		    g.drawRect(startPoint.getX()-2, startPoint.getY()-2, 4, 4);
+		    g.drawRect(endPoint.getX()-2, endPoint.getY()-2, 4, 4);
+		    g.setColor(Color.BLACK);
+		
+		}
 	}
 
 	@Override

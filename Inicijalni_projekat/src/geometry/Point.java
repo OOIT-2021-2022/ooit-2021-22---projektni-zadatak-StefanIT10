@@ -1,23 +1,24 @@
 package geometry;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
-public class point extends Shape {
+public class Point extends Shape {
 	
 	private int x;
 	private int y;
 	
 	
-	public point() {
+	public Point() {
 		
 	}
 	
-	public point(int x, int y) {
+	public Point(int x, int y) {
 		this.x=x;
 		this.y=y;
 	}
 	
-	public point(int x, int y, boolean selected) {
+	public Point(int x, int y, boolean selected) {
 		this(x,y);
 		setSelected(selected);
 	}
@@ -31,8 +32,8 @@ public class point extends Shape {
 	}
 	
 	public boolean equals(Object obj) {
-		if(obj instanceof point) {
-			point pomocna = (point) obj; //downcast
+		if(obj instanceof Point) {
+			Point pomocna = (Point) obj; //downcast
 			if(this.x==pomocna.x && this.y==pomocna.y)
 				return true;
 			
@@ -81,7 +82,14 @@ public class point extends Shape {
 		g.drawLine(x-2, y, x+2, y);
 		g.drawLine(x, y-2, x, y+2);
 		
+		if(selected) {
+			g.setColor(Color.blue);
+		    g.drawRect(x-2, y-2, 4, 4);
+		    g.setColor(Color.BLACK);
+		}
+		
 	}
+	
 
 	@Override
 	public void moveTo(int x, int y) {
@@ -99,8 +107,8 @@ public class point extends Shape {
 
 	@Override
 	public int compareTo(Object obj) {
-		if(obj instanceof point) {
-			point pointToCompare = (point)obj;
+		if(obj instanceof Point) {
+			Point pointToCompare = (Point)obj;
 			return (int)(this.distance(0, 0)-pointToCompare.distance(0, 0));
 		}
 		return 0;

@@ -11,7 +11,7 @@ public class test {
 
 		System.out.println("Kreiranje objekta");
 
-		point p = new point();
+		Point p = new Point();
 		// System.out.println(p.x + " "+ p.y+ " "+p.selected);
 
 		System.out.print(p.getX() + "\n");
@@ -23,13 +23,13 @@ public class test {
 
 		// vezbe 3
 		p.setSelected(true);
-		point p1 = new point();
+		Point p1 = new Point();
 		p1.setX(20);
 		p1.setY(25);
 
 		Line l1 = new Line();
-		Rectangle2 r1 = new Rectangle2();
-		Circle1 c1 = new Circle1();
+		Rectangle r1 = new Rectangle();
+		Circle c1 = new Circle();
 
 		// 1
 		p.setX(p1.getY());
@@ -63,16 +63,16 @@ public class test {
 		
 		//vezbe 4
 		
-		point p2 = new point(50,100);
-		Line l2 = new Line(p2, new point(400,500));
-		Circle1 c2 = new Circle1();
+		Point p2 = new Point(50,100);
+		Line l2 = new Line(p2, new Point(400,500));
+		Circle c2 = new Circle();
 		
 		//c2.getCenter().setX((int)(c2.getRadius()+l2.getStartPoint().distance(l2.getEndPoint().getX(),l2.getEndPoint().getY())));
 		
 		
 		System.out.println("\nVezbe 4");
-		point p4 = new point(10,15);
-		point p5 = new point(15,20,true);
+		Point p4 = new Point(10,15);
+		Point p5 = new Point(15,20,true);
 		System.out.println(p4.getX());
 		System.out.println(p5.isSelected());
 		
@@ -98,8 +98,8 @@ public class test {
 
 		
 		//iste vrednosti, ali razlicite reference zbog operatora NEW	
-	    point p6 = new point(10,15);
-	    point p7 = new point(10,15);
+	    Point p6 = new Point(10,15);
+	    Point p7 = new Point(10,15);
 	    System.out.println(p6==p7);
 	    System.out.println(p6.equals(p7));		
 			
@@ -109,30 +109,30 @@ public class test {
 		
 	    
 	    //vezbe 5
-	    point clickPoint= new point(12,17);
+	    Point clickPoint= new Point(12,17);
 	    System.out.println(p7.contains(clickPoint.getX(), clickPoint.getY()));
 		//System.out.println(lin.contains(clickPoint.getX(), clickPoint.getY()));
 	    
 	    
-	    Donut donut = new Donut(new point(12,17), 20,10,true);
+	    Donut donut = new Donut(new Point(12,17), 20,10,true);
 	    System.out.println(donut.toString());
-		System.out.println(donut instanceof Circle1);
+		System.out.println(donut instanceof Circle);
 		System.out.println(donut instanceof Donut);
 		System.out.println(c2 instanceof Donut);
 		
 		//Vezbe 6
-		Shape shape=new point(10,15);
+		Shape shape=new Point(10,15);
 		System.out.println(shape);
 		
 		
 		//Vezbe 7
-		point p10 = new point(55,70);
+		Point p10 = new Point(55,70);
 		p10.moveBy(10, 20);
 		System.out.println(p10);
 		p10.moveTo(100, 200);
 		System.out.println(p10);
 		
-		Circle1 movedCircle = new Circle1(new point(20, 30), 15);
+		Circle movedCircle = new Circle(new Point(20, 30), 15);
 		movedCircle.moveBy(5, 10);
 		System.out.println(movedCircle);
 		movedCircle.moveTo(15, 15);
@@ -142,9 +142,9 @@ public class test {
 		p10.compareTo(clickPoint);
 		
 		
-		Line linija1 = new Line(new point(10,15), new point(20,25));
-		Line linija2 = new Line(new point(15,20), new point(25,25));
-		Line linija3 = new Line(new point(10,25), new point(30,40));
+		Line linija1 = new Line(new Point(10,15), new Point(20,25));
+		Line linija2 = new Line(new Point(15,20), new Point(25,25));
+		Line linija3 = new Line(new Point(10,25), new Point(30,40));
 		Line[] linije = {linija1, linija2, linija3};
 		
 	    System.out.println("Niz linija pre sortiranja: ");
@@ -162,10 +162,10 @@ public class test {
 	    }
 	    
 	    
-	    Rectangle2 pravougaonik1 = new Rectangle2(new point(10,15), 10, 15);
-	    Rectangle2 pravougaonik2 = new Rectangle2(new point(10,15), 30, 40);
-	    Rectangle2 pravougaonik3 = new Rectangle2(new point(10,15), 10, 10);
-	    Rectangle2[] pravougaonici = {pravougaonik1, pravougaonik2, pravougaonik3};
+	    Rectangle pravougaonik1 = new Rectangle(new Point(10,15), 10, 15);
+	    Rectangle pravougaonik2 = new Rectangle(new Point(10,15), 30, 40);
+	    Rectangle pravougaonik3 = new Rectangle(new Point(10,15), 10, 10);
+	    Rectangle[] pravougaonici = {pravougaonik1, pravougaonik2, pravougaonik3};
 	    
 	    System.out.println("Niz pravougaonika pre sortiranja: ");
 	    

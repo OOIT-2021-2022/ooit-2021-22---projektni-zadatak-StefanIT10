@@ -1,31 +1,32 @@
 package geometry;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
-public class Rectangle2 extends Shape {
+public class Rectangle extends Shape {
 	
-	private point upperLeftPoint;
+	private Point upperLeftPoint;
 	private int width;
 	private int height;
 	
 	
-	public Rectangle2() {}
+	public Rectangle() {}
 	
-	public Rectangle2(point upperLeftPoint, int width, int height) {
+	public Rectangle(Point upperLeftPoint, int width, int height) {
 		this.upperLeftPoint=upperLeftPoint;
 		this.width=width;
 		this.height=height;
 		
 	}
 	
-	public Rectangle2(point upperLeftPoint, int width, int height, boolean selected) {
+	public Rectangle(Point upperLeftPoint, int width, int height, boolean selected) {
 		this(upperLeftPoint, width, height);
 		setSelected(selected);
 	}
 	
 	public boolean equals(Object obj) {
-		if(obj instanceof Rectangle2) {
-			Rectangle2 pomocna = (Rectangle2) obj; //downcast
+		if(obj instanceof Rectangle) {
+			Rectangle pomocna = (Rectangle) obj; //downcast
 			if(this.upperLeftPoint.equals(pomocna.upperLeftPoint)&&this.width==pomocna.width
 					&&this.height==pomocna.height)
 				return true;
@@ -45,7 +46,7 @@ public class Rectangle2 extends Shape {
 		return false;
 	}
 	
-	public boolean contains(point p) {
+	public boolean contains(Point p) {
 		if(p.getX()>upperLeftPoint.getX() && p.getX()<=upperLeftPoint.getX()+width
 				&& p.getY()>upperLeftPoint.getY() && p.getY()<=upperLeftPoint.getY()+height)
 			return true;
@@ -64,13 +65,23 @@ public class Rectangle2 extends Shape {
 	public void draw(Graphics g) {
 		g.drawRect(upperLeftPoint.getX(),upperLeftPoint.getY(),width,height);
 		
+		if(selected) {
+			g.setColor(Color.blue);
+		    g.drawRect(upperLeftPoint.getX()-2, upperLeftPoint.getY()-2, 4, 4);
+		    g.drawRect(upperLeftPoint.getX()+ width -2, upperLeftPoint.getY()-2, 4, 4);
+		    g.drawRect(upperLeftPoint.getX()-2, upperLeftPoint.getY() + height -2, 4, 4);
+		    g.drawRect(upperLeftPoint.getX() + width - 2, upperLeftPoint.getY() + height -2, 4, 4);
+		    g.setColor(Color.BLACK);
+		
+		}
+		
 	}
 	
-	public point getupperLeftPoint() {
+	public Point getupperLeftPoint() {
 		return this.upperLeftPoint;
 	}
 	
-	public void setUpperLeftPoint(point upperLeftPoint) {
+	public void setUpperLeftPoint(Point upperLeftPoint) {
 		this.upperLeftPoint=upperLeftPoint;
 	}
 
@@ -108,8 +119,8 @@ public class Rectangle2 extends Shape {
 
 	@Override
 	public int compareTo(Object obj) {
-		if(obj instanceof Rectangle2) {
-			Rectangle2 RectToCompare = (Rectangle2)obj;
+		if(obj instanceof Rectangle) {
+			Rectangle RectToCompare = (Rectangle)obj;
 			return (int)(this.area()-RectToCompare.area());
 		}
 		return 0;

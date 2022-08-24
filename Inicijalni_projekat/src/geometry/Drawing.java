@@ -49,6 +49,8 @@ public class Drawing extends JPanel {
 			sh.moveBy(10, 0);
 			System.out.println(sh);
 			
+			//moze u 48. liniji koda da stoji i it.next().moveBy(10,0);
+			
 		}
 		
 		
@@ -77,7 +79,7 @@ public class Drawing extends JPanel {
 		
 		//Zadatak 4
 		
-		it = shapes.iterator();
+		it = shapes.iterator();   
 		while (it.hasNext()) {
 			Shape sh = it.next();
 			sh.setSelected(true);

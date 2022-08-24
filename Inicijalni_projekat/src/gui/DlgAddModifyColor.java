@@ -118,7 +118,7 @@ public class DlgAddModifyColor extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						
-						if(Integer.parseInt(txtRed.getText()>0)) && txtRed.getText()<255)
+						if(Integer.parseInt(txtRed.getText()>0) && txtRed.getText()<255)
 						ok =true;
 						setVisible(false);
 						

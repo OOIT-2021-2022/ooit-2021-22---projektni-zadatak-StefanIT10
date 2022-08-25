@@ -1,238 +1,118 @@
 package geometry;
 
-<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Rectangle extends Shape {
-	
+public class Rectangle extends Shape{
 	private Point upperLeftPoint;
 	private int width;
 	private int height;
-	
-	
-	public Rectangle() {}
-	
-	public Rectangle(Point upperLeftPoint, int width, int height) {
-		this.upperLeftPoint=upperLeftPoint;
-		this.width=width;
-		this.height=height;
-		
+
+	public Rectangle() {
 	}
-	
+
+	public Rectangle(Point upperLeftPoint, int width, int height) {
+		this.upperLeftPoint = upperLeftPoint;
+		this.width = width;
+		this.height = height;
+	}
+
 	public Rectangle(Point upperLeftPoint, int width, int height, boolean selected) {
 		this(upperLeftPoint, width, height);
 		setSelected(selected);
 	}
-	
+
 	public boolean equals(Object obj) {
-		if(obj instanceof Rectangle) {
-			Rectangle pomocna = (Rectangle) obj; //downcast
-			if(this.upperLeftPoint.equals(pomocna.upperLeftPoint)&&this.width==pomocna.width
-					&&this.height==pomocna.height)
+		if (obj instanceof Rectangle) {
+			Rectangle pomocna = (Rectangle) obj;
+			if (this.upperLeftPoint.equals(pomocna.upperLeftPoint) && this.width == pomocna.width
+					&& this.height == pomocna.height)
 				return true;
-			
-			else 
+			else
 				return false;
-			
 		} else
 			return false;
-		
-		}
-	
+	}
+
 	public boolean contains(int x, int y) {
-		if(x>upperLeftPoint.getX() && x<=upperLeftPoint.getX()+width
-				&& y>upperLeftPoint.getY() && y<=upperLeftPoint.getY()+height)
-			return true;
-		return false;
+		return upperLeftPoint.getX() <= x && upperLeftPoint.getX() + width >= x && upperLeftPoint.getY() <= y
+				&& upperLeftPoint.getY() + height >= y;
 	}
 	
-	public boolean contains(Point p) {
-		if(p.getX()>upperLeftPoint.getX() && p.getX()<=upperLeftPoint.getX()+width
-				&& p.getY()>upperLeftPoint.getY() && p.getY()<=upperLeftPoint.getY()+height)
-			return true;
-		return false;
+	public boolean contains(Point clickPoint) {
+		return upperLeftPoint.getX() <= clickPoint.getX() && upperLeftPoint.getX() + width >= clickPoint.getX() && 
+				upperLeftPoint.getY() <= clickPoint.getY()
+				&& upperLeftPoint.getY() + height >= clickPoint.getY();
 	}
-	
+
 	public int area() {
-		return height*width;
+		return width * height;
 	}
-	
+
 	public int circumference() {
-		return 2*width+2*height;
+		return 2 * width + 2 * height;
 	}
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(upperLeftPoint.getX(),upperLeftPoint.getY(),width,height);
-		
-		if(selected) {
+		g.drawRect(upperLeftPoint.getX(), upperLeftPoint.getY(), width, height);		
+	
+		if(isSelected()) {
 			g.setColor(Color.blue);
-		    g.drawRect(upperLeftPoint.getX()-2, upperLeftPoint.getY()-2, 4, 4);
-		    g.drawRect(upperLeftPoint.getX()+ width -2, upperLeftPoint.getY()-2, 4, 4);
-		    g.drawRect(upperLeftPoint.getX()-2, upperLeftPoint.getY() + height -2, 4, 4);
-		    g.drawRect(upperLeftPoint.getX() + width - 2, upperLeftPoint.getY() + height -2, 4, 4);
-		    g.setColor(Color.BLACK);
-		
+			g.drawRect(upperLeftPoint.getX() - 2, upperLeftPoint.getY() - 2, 4, 4);
+			g.drawRect(upperLeftPoint.getX() + width - 2, upperLeftPoint.getY() - 2, 4, 4);
+			g.drawRect(upperLeftPoint.getX() - 2, upperLeftPoint.getY() + height - 2, 4, 4);
+			g.drawRect(upperLeftPoint.getX() + width  - 2, upperLeftPoint.getY() + height - 2, 4, 4);
+			g.setColor(Color.black);
 		}
-		
+
 	}
 	
-	public Point getupperLeftPoint() {
-		return this.upperLeftPoint;
-	}
-	
-	public void setUpperLeftPoint(Point upperLeftPoint) {
-		this.upperLeftPoint=upperLeftPoint;
-	}
-
-	public int getWidth() {
-		return width;
-	}
-
-	public void setWidth(int width) {
-		this.width = width;
-	}
-
-	public int getHeight() {
-		return height;
-	}
-
-	public void setHeight(int height) {
-		this.height = height;
-	}
-
-	public String toString() {
-		return "Upper Left Point: "+upperLeftPoint+", width = "+width+", height = "+height;
-	}
-
 	@Override
 	public void moveTo(int x, int y) {
-		upperLeftPoint.moveTo(x, y);
-		
+		upperLeftPoint.moveTo(x, y);		
 	}
 
 	@Override
 	public void moveBy(int x, int y) {
-		upperLeftPoint.moveBy(x, y);
-		
+		upperLeftPoint.moveBy(x, y);		
 	}
-
+	
 	@Override
 	public int compareTo(Object obj) {
 		if(obj instanceof Rectangle) {
-			Rectangle RectToCompare = (Rectangle)obj;
-			return (int)(this.area()-RectToCompare.area());
-		}
+			Rectangle rectangleToCompare = (Rectangle)obj;
+			return (int)(this.area() - rectangleToCompare.area());
+		}		
 		return 0;
 	}
-	
-	
 
-=======
-public class Rectangle {
-
-	private Point upperLeftPoint;
-	private int width;
-	private int height;
-	private boolean selected;
-	
-	 public Rectangle() {}
-	
-	public Rectangle(Point upperLeftPoint, int width, int height) {
-		this.upperLeftPoint=upperLeftPoint;
-		this.width=width;
-		this.height=height;
-		
-	}
-	
-	public Rectangle2(Point upperLeftPoint, int width, int height, boolean selected) {
-		this(upperLeftPoint, width, height);
-		this.selected=selected;
-	}
-	
-	public boolean equals(Object obj) {
-		if(obj instanceof Rectangle) {
-			Rectangle pomocna = (Rectangle) obj; //downcast
-			if(this.upperLeftPoint.equals(pomocna.upperLeftPoint)&&this.width==pomocna.width
-					&&this.height==pomocna.height)
-				return true;
-			
-			else 
-				return false;
-			
-		} else
-			return false;
-		
-		}
-	
-	public boolean contains(int x, int y) {
-		return upperLeftPoint.getX()<=x && upperLeftPoint.getX()+width>=x 
-				&& upperLeftPoint.getY()<=y && upperLeftPoint.getY()+height>=y;
-	}
-	
-	public boolean contains(Point clickPoint) {
-		return upperLeftPoint.getX()<=clickPoint.getX() && upperLeftPoint.getX()+width>=clickPoint.getX()
-				&& upperLeftPoint.getY()<=clickPoint.getY() && upperLeftPoint.getY()+height>=clickPoint.getY();
-	}
-	
-	
-	
-	
-	public int area() {
-		return width*height;
-	}
-	
-	public int circumference() {
-		return 2*width+2*height;
-	}
-	
-	public Point getUpperLeftPoint()
-	{
+	public Point getUpperLeftPoint() {
 		return this.upperLeftPoint;
 	}
-	
-	
-	public void setUpperLeftPoint(Point upperLeftPoint) 
-	{
+
+	public void setUpperLeftPoint(Point upperLeftPoint) {
 		this.upperLeftPoint = upperLeftPoint;
 	}
-
 
 	public int getWidth() {
 		return width;
 	}
 
-
 	public void setWidth(int width) {
 		this.width = width;
 	}
-
 
 	public int getHeight() {
 		return height;
 	}
 
-
 	public void setHeight(int height) {
 		this.height = height;
 	}
 
-
-	public boolean isSelected() {
-		return selected;
-	}
-
-
-	public void setSelected(boolean selected) {
-		this.selected = selected;
-	}
-	
 	public String toString() {
-		return "Upper Left Point: "+upperLeftPoint+", width = "+width+", height ="+height;
+		return "Upper left point:" + upperLeftPoint + ", width =" + width + ",height = " + height;
 	}
 
-	
-	
->>>>>>> branch 'master' of https://github.com/OOIT-2021-2022/ooit-2021-22---projektni-zadatak-StefanIT10
 }

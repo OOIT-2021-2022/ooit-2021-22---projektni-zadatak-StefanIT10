@@ -9,6 +9,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.GridBagLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JTextField;
@@ -21,7 +23,7 @@ public class DlgAddModifyColor extends JDialog {
 	public JTextField txtRed;
 	public JTextField txtGreen;
 	public JTextField txtBlue;
-	private boolean ok;
+	private boolean ok = false;
 
 	/**
 	 * Launch the application.
@@ -118,13 +120,15 @@ public class DlgAddModifyColor extends JDialog {
 				okButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						
-						if(Integer.parseInt(txtRed.getText()>0) && txtRed.getText()<255)
-						ok =true;
-						setVisible(false);
-						
-						
-						
+						if(Integer.parseInt(txtRed.getText())>0 & Integer.parseInt(txtRed.getText())<256) {
+						ok = true;
+						setVisible(false);	
+						}
+						else {
+							JOptionPane.showMessageDialog(null, "Greska!", "Poruka", JOptionPane.ERROR_MESSAGE);
+						}
 					}
+						
 				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);

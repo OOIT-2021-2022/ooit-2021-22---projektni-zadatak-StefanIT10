@@ -8,9 +8,12 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import geometry.Circle;
+
 public class StackDlg extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
+	private Circle circle = null;
 
 	/**
 	 * Launch the application.
@@ -50,6 +53,11 @@ public class StackDlg extends JDialog {
 				buttonPane.add(cancelButton);
 			}
 		}
+	}
+
+	public Circle getCircle() {
+		// TODO Auto-generated method stub
+		return circle;
 	}
 
 }

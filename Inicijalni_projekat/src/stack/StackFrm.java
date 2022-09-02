@@ -6,6 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
@@ -19,6 +20,8 @@ import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import javax.swing.JButton;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class StackFrm extends JFrame {
 
@@ -75,12 +78,46 @@ public class StackFrm extends JFrame {
 		);
 		pnlCentar.setLayout(gl_pnlCentar);
 		
+		scrollPane.setViewportView(stackList);
+		stackList.setModel(dlm);
+		
 		JPanel pnlEast = new JPanel();
 		contentPane.add(pnlEast, BorderLayout.EAST);
 		
 		JButton addButton = new JButton("Add");
+		addButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int k=0;
+				StackDlg dlgStack = new StackDlg();
+				dlgStack.setVisible(true);
+				
+				if(dlgStack.getCircle()!=null) {
+					dlm.add(k, dlgStack.getCircle());
+					k++;
+				}
+				
+			}
+		});
 		
 		JButton deleteButton = new JButton("Delete");
+		deleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(dlm.isEmpty()== false) {
+					StackDlg dlgStack = new StackDlg();
+					dlgStack.setCircle(dlm.getElementAt(0));
+					dlgStack.setVisible(true);
+					dlm.removeElementAt(0);
+				}
+				
+				else {
+					JOptionPane.showMessageDialog(null, "STACK IS EMPTY", "Error", JOptionPane.ERROR_MESSAGE);
+				   return;
+				}
+				
+			}
+		});
 		GroupLayout gl_pnlEast = new GroupLayout(pnlEast);
 		gl_pnlEast.setHorizontalGroup(
 			gl_pnlEast.createParallelGroup(Alignment.LEADING)

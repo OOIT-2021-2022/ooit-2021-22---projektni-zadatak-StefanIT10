@@ -56,6 +56,7 @@ public class StackFrm extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		setLocationRelativeTo(null);
 		
 		JPanel pnlCentar = new JPanel();
 		contentPane.add(pnlCentar, BorderLayout.CENTER);
@@ -94,8 +95,8 @@ public class StackFrm extends JFrame {
 				
 				if(dlgStack.getCircle()!=null) {
 					dlm.add(k, dlgStack.getCircle());
-					k++;
-				}
+					//k++;
+				}	
 				
 			}
 		});
@@ -105,10 +106,16 @@ public class StackFrm extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				if(dlm.isEmpty()== false) {
+					
 					StackDlg dlgStack = new StackDlg();
 					dlgStack.setCircle(dlm.getElementAt(0));
 					dlgStack.setVisible(true);
-					dlm.removeElementAt(0);
+					
+					if(dlgStack.getCircle()!=null) {
+						dlm.removeElementAt(0);
+					}
+					
+				    
 				}
 				
 				else {
@@ -124,18 +131,18 @@ public class StackFrm extends JFrame {
 				.addGroup(gl_pnlEast.createSequentialGroup()
 					.addGap(31)
 					.addGroup(gl_pnlEast.createParallelGroup(Alignment.LEADING)
-						.addComponent(addButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
-						.addComponent(deleteButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(deleteButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
+						.addComponent(addButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
 					.addGap(22))
 		);
 		gl_pnlEast.setVerticalGroup(
 			gl_pnlEast.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnlEast.createSequentialGroup()
-					.addGap(70)
+					.addGap(59)
 					.addComponent(addButton)
-					.addGap(40)
+					.addGap(60)
 					.addComponent(deleteButton)
-					.addContainerGap(95, Short.MAX_VALUE))
+					.addContainerGap(86, Short.MAX_VALUE))
 		);
 		pnlEast.setLayout(gl_pnlEast);
 	}

@@ -21,7 +21,21 @@ public class Point extends Shape {
 		this(x, y);
 		setSelected(selected);
 	}
+	
+	public Point(int x, int y, Color color) {
+		this(x,y);
+		this.setColor(color);
+	}
+	
 
+	public Point(int x, int y, boolean selected, Color color) {
+		// TODO Auto-generated constructor stub
+		this(x,y, selected);
+		this.setColor(color);
+		
+	}
+
+	
 	public double distance(int xPoint2, int yPoint2) {
 		double dx = this.x - xPoint2;
 		double dy = this.y - yPoint2;

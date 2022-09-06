@@ -75,7 +75,7 @@ public class PointDlg extends JDialog {
 			colorButton.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					
-					color = JColorChooser.showDialog(null, "Pick a colour: ", color);
+					color = JColorChooser.showDialog(null, "Pick a color: ", color);
 					
 					if(color == null)
 						color = color.black;

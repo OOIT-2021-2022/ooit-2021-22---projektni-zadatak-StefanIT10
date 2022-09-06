@@ -24,6 +24,12 @@ public class Line extends Shape{
 		this.endPoint = endPoint;
 	}
 	
+	public Line(Point startPoint, Point endPoint, boolean selected, Color color) {
+		this(startPoint, endPoint, selected);
+		this.setColor(color);
+	}
+	
+	
 	public boolean equals(Object obj) {
 		if (obj instanceof Line) {
 			Line pomocna = (Line) obj;

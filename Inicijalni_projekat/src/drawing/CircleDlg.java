@@ -11,38 +11,38 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import geometry.Rectangle;
+import geometry.Circle;
 import geometry.Point;
+
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class RectangleDlg extends JDialog {
+public class CircleDlg extends JDialog {
 
 	private final JPanel pnlCenter = new JPanel();
 	private JButton okButton;
 	private JButton closeButton;
 	private JTextField textX;
 	private JTextField textY;
-	private JTextField textHeight;
-	private JTextField textWidth;
+	private JTextField textRadius;
 	
-	private Color innerColor = null;
 	private Color outerColor = null;
-	private Rectangle rectangle = null;
- 
+	private Color innerColor = null;
+	private Circle circle = null;
+
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		try {
-			RectangleDlg dialog = new RectangleDlg();
+			CircleDlg dialog = new CircleDlg();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -53,33 +53,30 @@ public class RectangleDlg extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public RectangleDlg() {
+	public CircleDlg() {
 		setTitle("Stefan Cvetkovic IT10/2021");
 		setModal(true);
 		setResizable(false);
-		setBounds(100, 100, 457, 346);
+		setBounds(100, 100, 465, 300);
 		getContentPane().setLayout(new BorderLayout());
 		pnlCenter.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(pnlCenter, BorderLayout.CENTER);
 		setLocationRelativeTo(null);
 		
-		JLabel lblX = new JLabel("UpperLeftPoint's X coordinate: ");
-		JLabel lblY = new JLabel("UpperLeftPoint's Y coordinate: ");
-		JLabel lblHeight = new JLabel("Height: ");
-		JLabel lblWidth = new JLabel("Width: ");
+		JLabel lblX = new JLabel("X coordinate(Center): ");
+		JLabel lblY = new JLabel("Y coordinate(Center): ");
+		JLabel lblRadius = new JLabel("Radius: ");
 		textX = new JTextField();
 		textX.setColumns(10);
 		textY = new JTextField();
 		textY.setColumns(10);
-		textHeight = new JTextField();
-		textHeight.setColumns(10);
-		textWidth = new JTextField();
-		textWidth.setColumns(10);
+		textRadius = new JTextField();
+		textRadius.setColumns(10);
 		JButton outerColorButton = new JButton("Outer color");
 		outerColorButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				outerColor = JColorChooser.showDialog(null, "Pick outer color: ", outerColor);
+                outerColor = JColorChooser.showDialog(null, "Pick outer color: ", outerColor);
 				
 				if(outerColor == null) {
 					outerColor = Color.black;
@@ -90,7 +87,7 @@ public class RectangleDlg extends JDialog {
 		innerColorButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				innerColor = JColorChooser.showDialog(null, "Pick inner color: ", innerColor);
+              innerColor = JColorChooser.showDialog(null, "Pick inner color: ", innerColor);
 				
 				if(innerColor == null) {
 					innerColor = Color.white;
@@ -101,59 +98,50 @@ public class RectangleDlg extends JDialog {
 		gl_pnlCenter.setHorizontalGroup(
 			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnlCenter.createSequentialGroup()
+					.addGap(46)
 					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_pnlCenter.createSequentialGroup()
-							.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_pnlCenter.createSequentialGroup()
-									.addGap(37)
-									.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-										.addComponent(lblX)
-										.addComponent(lblY)))
-								.addGroup(gl_pnlCenter.createSequentialGroup()
-									.addGap(87)
-									.addGroup(gl_pnlCenter.createParallelGroup(Alignment.TRAILING)
-										.addComponent(lblWidth)
-										.addComponent(lblHeight))))
-							.addGap(29)
-							.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-								.addComponent(textHeight, GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-								.addComponent(textY, GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-								.addComponent(textWidth, GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-								.addComponent(textX, GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)))
-						.addGroup(gl_pnlCenter.createSequentialGroup()
-							.addGap(84)
+							.addGap(47)
 							.addComponent(outerColorButton)
-							.addPreferredGap(ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
 							.addComponent(innerColorButton)
-							.addGap(34)))
-					.addGap(68))
+							.addGap(29))
+						.addGroup(gl_pnlCenter.createSequentialGroup()
+							.addComponent(lblX)
+							.addGap(18)
+							.addComponent(textX, GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE))
+						.addGroup(gl_pnlCenter.createSequentialGroup()
+							.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblY)
+								.addGroup(gl_pnlCenter.createSequentialGroup()
+									.addGap(31)
+									.addComponent(lblRadius)))
+							.addGap(18)
+							.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+								.addComponent(textRadius, GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE)
+								.addComponent(textY, GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))))
+					.addGap(59))
 		);
 		gl_pnlCenter.setVerticalGroup(
 			gl_pnlCenter.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_pnlCenter.createSequentialGroup()
-					.addContainerGap()
+					.addGap(20)
 					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(textX, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(lblX))
-					.addGap(28)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblX)
+						.addComponent(textX, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addGap(33)
+					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblY)
 						.addComponent(textY, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(24)
-					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.LEADING)
-						.addGroup(gl_pnlCenter.createSequentialGroup()
-							.addGap(50)
-							.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-								.addComponent(textWidth, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblWidth)))
-						.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-							.addComponent(textHeight, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-							.addComponent(lblHeight)))
 					.addGap(35)
 					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
-						.addComponent(outerColorButton, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
-						.addComponent(innerColorButton, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
-					.addGap(38))
+						.addComponent(textRadius, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblRadius))
+					.addPreferredGap(ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+					.addGroup(gl_pnlCenter.createParallelGroup(Alignment.BASELINE)
+						.addComponent(outerColorButton)
+						.addComponent(innerColorButton))
+					.addContainerGap())
 		);
 		pnlCenter.setLayout(gl_pnlCenter);
 		{
@@ -167,14 +155,14 @@ public class RectangleDlg extends JDialog {
 						try {
 							int X = Integer.parseInt(textX.getText());
 							int Y = Integer.parseInt(textY.getText());
-							int Width = Integer.parseInt(textWidth.getText());
-							int Height = Integer.parseInt(textHeight.getText());
+							int Radius = Integer.parseInt(textRadius.getText());
 							
-							if(X<0 || Y<0 || Width<1 || Height<1) {
+							
+							if(X<0 || Y<0 || Radius<1) {
 								JOptionPane.showMessageDialog(null, "Incorrect values!", "Error", JOptionPane.ERROR_MESSAGE);
 								return;
 							}
-							rectangle = new Rectangle(new Point(X, Y), Width, Height, false, outerColor, innerColor);
+							circle = new Circle(new Point(X, Y), Radius, false, outerColor, innerColor);
 							dispose();
 						}
 						catch(Exception ex) {
@@ -199,16 +187,16 @@ public class RectangleDlg extends JDialog {
 			gl_buttonPane.setHorizontalGroup(
 				gl_buttonPane.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_buttonPane.createSequentialGroup()
-						.addGap(107)
+						.addGap(115)
 						.addComponent(okButton)
-						.addGap(118)
+						.addGap(119)
 						.addComponent(closeButton)
-						.addGap(120))
+						.addGap(109))
 			);
 			gl_buttonPane.setVerticalGroup(
 				gl_buttonPane.createParallelGroup(Alignment.LEADING)
 					.addGroup(gl_buttonPane.createSequentialGroup()
-						.addGap(5)
+						.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addGroup(gl_buttonPane.createParallelGroup(Alignment.BASELINE)
 							.addComponent(okButton)
 							.addComponent(closeButton)))
@@ -217,13 +205,14 @@ public class RectangleDlg extends JDialog {
 		}
 	}
 	
-	public Rectangle getRectangle() {
-		return rectangle;
+	public Circle getCircle() {
+		return circle;
 	}
 	
 	public void setPoint(Point point) {
-		textX.setText("" + point.getX());
-		textY.setText("" + point.getY());
+			textX.setText("" + point.getX());
+			textY.setText("" + point.getY());
+		
 	}
 	
 	public void setColors(Color outerColor, Color innerColor) {
@@ -231,13 +220,12 @@ public class RectangleDlg extends JDialog {
 		this.innerColor=innerColor;
 	}
 	
-	public void setRectangle(Rectangle rectan) {
-		textX.setText("" + rectan.getUpperLeftPoint().getX());
-		textY.setText("" + rectan.getUpperLeftPoint().getY());
-		textWidth.setText("" + rectan.getWidth());
-		textHeight.setText("" + rectan.getHeight());
-		outerColor = rectan.getColor();
-		innerColor = rectan.getInnerColor();
+	public void setCircle(Circle circle) {
+		textX.setText("" + circle.getCenter().getX());
+		textY.setText("" + circle.getCenter().getY());
+		textRadius.setText("" + circle.getRadius());
+		outerColor = circle.getColor();
+		innerColor = circle.getInnerColor();
 	}
 
 }

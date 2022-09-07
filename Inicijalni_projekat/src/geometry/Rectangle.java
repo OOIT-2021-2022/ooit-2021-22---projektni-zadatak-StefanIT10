@@ -29,8 +29,7 @@ public class Rectangle extends Shape{
 	}
 	
 	public Rectangle(Point upperLeftPoint, int width, int height, boolean selected, Color color, Color innerColor) {
-		this(upperLeftPoint, width, height, selected);
-		this.setColor(color);
+		this(upperLeftPoint, width, height, selected, color);
 		this.setInnerColor(innerColor);
 	}
 

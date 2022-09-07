@@ -21,6 +21,18 @@ public class Circle extends Shape{
 		setSelected(selected);
 	}
 
+	public Circle(Point center, int radius, boolean selected, Color color) {
+		this(center, radius, selected);
+		this.setColor(color);
+	}
+	
+	
+	public Circle(Point center, int radius, boolean selected, Color color, Color innerColor) {
+		// TODO Auto-generated constructor stub
+		this(center, radius, selected, color);
+		this.setInnerColor(innerColor);
+	}
+
 	public boolean equals(Object obj) {
 		if (obj instanceof Circle) {
 			Circle pomocni = (Circle) obj;

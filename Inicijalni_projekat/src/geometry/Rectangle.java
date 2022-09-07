@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Rectangle extends Shape{
+	
 	private Point upperLeftPoint;
 	private int width;
 	private int height;
@@ -20,6 +21,23 @@ public class Rectangle extends Shape{
 	public Rectangle(Point upperLeftPoint, int width, int height, boolean selected) {
 		this(upperLeftPoint, width, height);
 		setSelected(selected);
+	}
+	
+	public Rectangle(Point upperLeftPoint, int width, int height, boolean selected, Color color) {
+		this(upperLeftPoint, width, height, selected);
+		this.setColor(color);
+	}
+	
+	public Rectangle(Point upperLeftPoint, int width, int height, boolean selected, Color color, Color innerColor) {
+		this(upperLeftPoint, width, height, selected);
+		this.setColor(color);
+		this.setInnerColor(innerColor);
+	}
+
+	
+
+	public Rectangle(java.awt.Point point, int width2, int height2, boolean b, Color outerColor, Color innerColor) {
+		// TODO Auto-generated constructor stub
 	}
 
 	public boolean equals(Object obj) {

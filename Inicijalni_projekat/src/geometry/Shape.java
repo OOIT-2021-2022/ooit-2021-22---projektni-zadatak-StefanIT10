@@ -7,7 +7,7 @@ public abstract class Shape implements Moveable, Comparable{
 	//protected boolean selected;
 	private boolean selected;
 	private Color color;
-	private Color colorInner;
+	private Color innerColor;
 
 	public Shape() {
 
@@ -26,12 +26,12 @@ public abstract class Shape implements Moveable, Comparable{
 		this.selected=selected;
 	}
 
-	public Color getColorInner() {
-		return colorInner;
+	public Color getInnerColor() {
+		return innerColor;
 	}
 
-	public void setColorInner(Color colorInner) {
-		this.colorInner = colorInner;
+	public void setInnerColor(Color innerColor) {
+		this.innerColor = innerColor;
 	}
 
 	public Color getColor() {

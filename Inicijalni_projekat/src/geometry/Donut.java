@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Donut extends Circle {
+	
 	private int innerRadius;
 
 	public Donut() {
@@ -20,6 +21,16 @@ public class Donut extends Circle {
 		// drugi nacin
 		super(center, radius, selected);
 		this.innerRadius = innerRadius;
+	}
+	
+	public Donut(Point center, int radius, int innerRadius, boolean selected, Color color) {
+		this(center, radius, innerRadius, selected);
+		this.setColor(color);
+	}
+	
+	public Donut(Point center, int radius, int innerRadius, boolean selected, Color color, Color innerColor) {
+		this(center, radius, innerRadius, selected, color);
+		this.setInnerColor(innerColor);
 	}
 
 	public boolean equals(Object obj) {

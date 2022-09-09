@@ -51,7 +51,9 @@ public class Line extends Shape{
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawLine(startPoint.getX(), startPoint.getY(), endPoint.getX(), endPoint.getY());		
+		g.setColor(this.getColor());
+		g.drawLine(startPoint.getX(), startPoint.getY(), endPoint.getX(), endPoint.getY());
+		
 		
 		if(isSelected()) {
 			g.setColor(Color.BLUE);
@@ -101,6 +103,12 @@ public class Line extends Shape{
 	
 	public String toString() {
 		return startPoint + "-- >" + endPoint;
+	}
+
+	@Override
+	public void fill(Graphics g) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

@@ -64,7 +64,9 @@ public class Circle extends Shape{
 
 	@Override
 	public void draw(Graphics g) {
+		g.setColor(getColor());
 		g.drawOval(center.getX()-radius, center.getY()-radius, radius*2, radius*2);
+		this.fill(g);
 	
 		if (isSelected()) {
 			g.setColor(Color.BLUE);
@@ -120,6 +122,14 @@ public class Circle extends Shape{
 	public String toString() {
 		// Center=(x,y), radius= radius
 		return "Center=" + center + ", radius=" + radius;
+	}
+
+	@Override
+	public void fill(Graphics g) {
+		// TODO Auto-generated method stub
+		g.setColor(getInnerColor());
+		g.fillOval(this.center.getX() - this.radius + 1, this.center.getY() - this.radius + 1, this.radius * 2 - 2, this.radius * 2 - 2);
+		
 	}
 
 }

@@ -72,7 +72,9 @@ public class Rectangle extends Shape{
 	
 	@Override
 	public void draw(Graphics g) {
-		g.drawRect(upperLeftPoint.getX(), upperLeftPoint.getY(), width, height);		
+		g.setColor(getColor());
+		g.drawRect(upperLeftPoint.getX(), upperLeftPoint.getY(), width, height);
+		this.fill(g);
 	
 		if(isSelected()) {
 			g.setColor(Color.blue);
@@ -130,6 +132,13 @@ public class Rectangle extends Shape{
 
 	public String toString() {
 		return "Upper left point:" + upperLeftPoint + ", width =" + width + ",height = " + height;
+	}
+
+	@Override
+	public void fill(Graphics g) {
+		// TODO Auto-generated method stub
+		g.setColor(getInnerColor());
+		g.fillRect(this.upperLeftPoint.getX() + 1, this.getUpperLeftPoint().getY() + 1, this.width - 1, this.height - 1);
 	}
 
 }

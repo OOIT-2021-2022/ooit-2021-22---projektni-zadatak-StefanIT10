@@ -209,11 +209,11 @@ public class LineDlg extends JDialog {
 		}
 	}
 	
-	//public void setColors(Color edgecolor) {
-		//	this.color = color;
-		//}
+	public void setColors(Color edgecolor) {
+		this.color = color;
+		}
 	
-	public Line getLine(Line line) {
+	public Line getLine() {
 		return line;
 	}
 	

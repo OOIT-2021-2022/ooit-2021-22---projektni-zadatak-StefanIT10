@@ -177,9 +177,9 @@ public class PointDlg extends JDialog {
 		}
 	}
 	
-	//public void setColors(Color edgecolor) {
-	//	this.color = color;
-	//}
+	public void setColors(Color edgecolor) {
+		this.color = color;
+	}
 	
 	public Point getPoint() {
 		return point;

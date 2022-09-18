@@ -57,93 +57,77 @@ public class StackFrm extends JFrame {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		setLocationRelativeTo(null);
-		
+
 		JPanel pnlCentar = new JPanel();
 		contentPane.add(pnlCentar, BorderLayout.CENTER);
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		GroupLayout gl_pnlCentar = new GroupLayout(pnlCentar);
-		gl_pnlCentar.setHorizontalGroup(
-			gl_pnlCentar.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlCentar.createSequentialGroup()
-					.addGap(20)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 261, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(27, Short.MAX_VALUE))
-		);
-		gl_pnlCentar.setVerticalGroup(
-			gl_pnlCentar.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlCentar.createSequentialGroup()
-					.addGap(29)
-					.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(30, Short.MAX_VALUE))
-		);
+		gl_pnlCentar.setHorizontalGroup(gl_pnlCentar.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlCentar.createSequentialGroup().addGap(20)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 261, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(27, Short.MAX_VALUE)));
+		gl_pnlCentar.setVerticalGroup(gl_pnlCentar.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlCentar.createSequentialGroup().addGap(29)
+						.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 192, GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(30, Short.MAX_VALUE)));
 		pnlCentar.setLayout(gl_pnlCentar);
-		
+
 		scrollPane.setViewportView(stackList);
 		stackList.setModel(dlm);
-		
+
 		JPanel pnlEast = new JPanel();
 		contentPane.add(pnlEast, BorderLayout.EAST);
-		
+
 		JButton addButton = new JButton("Add");
 		addButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
-				int k=0;
+
+				int k = 0;
 				StackDlg dlgStack = new StackDlg();
 				dlgStack.setVisible(true);
-				
-				if(dlgStack.getCircle()!=null) {
+
+				if (dlgStack.getCircle() != null) {
 					dlm.add(k, dlgStack.getCircle());
-					//k++;
-				}	
-				
+					// k++;
+				}
+
 			}
 		});
-		
+
 		JButton deleteButton = new JButton("Delete");
 		deleteButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				if(dlm.isEmpty()== false) {
-					
+
+				if (dlm.isEmpty() == false) {
+
 					StackDlg dlgStack = new StackDlg();
 					dlgStack.setCircle(dlm.getElementAt(0));
 					dlgStack.setVisible(true);
-					
-					if(dlgStack.getCircle()!=null) {
+
+					if (dlgStack.getCircle() != null) {
 						dlm.removeElementAt(0);
 					}
-					
-				    
+
 				}
-				
+
 				else {
 					JOptionPane.showMessageDialog(null, "STACK IS EMPTY", "Error", JOptionPane.ERROR_MESSAGE);
-				   return;
+					return;
 				}
-				
+
 			}
 		});
 		GroupLayout gl_pnlEast = new GroupLayout(pnlEast);
-		gl_pnlEast.setHorizontalGroup(
-			gl_pnlEast.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlEast.createSequentialGroup()
-					.addGap(31)
-					.addGroup(gl_pnlEast.createParallelGroup(Alignment.LEADING)
+		gl_pnlEast.setHorizontalGroup(gl_pnlEast.createParallelGroup(Alignment.LEADING).addGroup(gl_pnlEast
+				.createSequentialGroup().addGap(31)
+				.addGroup(gl_pnlEast.createParallelGroup(Alignment.LEADING)
 						.addComponent(deleteButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE)
 						.addComponent(addButton, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 63, Short.MAX_VALUE))
-					.addGap(22))
-		);
-		gl_pnlEast.setVerticalGroup(
-			gl_pnlEast.createParallelGroup(Alignment.LEADING)
-				.addGroup(gl_pnlEast.createSequentialGroup()
-					.addGap(59)
-					.addComponent(addButton)
-					.addGap(60)
-					.addComponent(deleteButton)
-					.addContainerGap(86, Short.MAX_VALUE))
-		);
+				.addGap(22)));
+		gl_pnlEast.setVerticalGroup(gl_pnlEast.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_pnlEast.createSequentialGroup().addGap(59).addComponent(addButton).addGap(60)
+						.addComponent(deleteButton).addContainerGap(86, Short.MAX_VALUE)));
 		pnlEast.setLayout(gl_pnlEast);
 	}
 }

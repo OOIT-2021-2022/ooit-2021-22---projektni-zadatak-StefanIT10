@@ -106,7 +106,7 @@ public class Donut extends Circle {
 	public void fill(Graphics g) {
 		g.setColor(getInnerColor());
 		super.fill(g);
-		g.setColor(Color.WHITE);
+		g.setColor(Color.white);
 		g.fillOval(getCenter().getX() - this.innerRadius, getCenter().getY() - this.innerRadius,
 				this.innerRadius * 2 - 2, this.innerRadius * 2 - 2);
 	}

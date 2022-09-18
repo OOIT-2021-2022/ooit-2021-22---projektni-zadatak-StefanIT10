@@ -160,11 +160,12 @@ public class LineDlg extends JDialog {
 							int endPointX = Integer.parseInt(textEndPointX.getText());
 							int endPointY = Integer.parseInt(textEndPointY.getText());
 							
-							
+							/*
 							if(startPointX<0 || startPointY<0 || endPointX<0 || endPointY<0) {
 								JOptionPane.showMessageDialog(null, "Incorrect values!", "Error", JOptionPane.ERROR_MESSAGE);
 								return;
 							}
+							*/
 							line = new Line(new Point(startPointX, startPointY), new Point(endPointX, endPointY), false, color);
 							dispose();
 							

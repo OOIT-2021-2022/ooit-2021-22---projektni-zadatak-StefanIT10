@@ -218,6 +218,7 @@ public class Test {
 		for (int j = 0; j < shapes.length; j++) {
 			shapes[j].moveBy(10, 15);
 		}
+		
 	}
 
 }
